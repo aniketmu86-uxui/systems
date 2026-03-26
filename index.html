@@ -3,290 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniket Mukherjee | Creative Operations & Studio Lead</title>
+    <title>Aniket Mukherjee | Creative Engineering & Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f0f0f;
-            --surface: #1a1a1a;
-            --surface-hover: #222222;
-            --accent: #00ff88;
-            --accent-dim: rgba(0, 255, 136, 0.1);
-            --text-main: #f5f5f5;
-            --text-dim: #a0a0a0;
-            --border: #2a2a2a;
+            --bg: #050505;
+            --surface: #0f0f0f;
+            --surface-hover: #151515;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent: #ffffff;
+            --glow: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 50%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
             font-family: 'Inter', sans-serif; 
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            background-image: var(--glow);
+            background-repeat: no-repeat;
         }
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+        
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .text-muted { color: var(--text-muted); }
 
-        /* Layout */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
 
-        /* Navigation */
-        nav { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; transition: 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--accent); }
+        /* Floating Glass Nav */
+        nav { 
+            position: fixed; 
+            top: 2rem; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: rgba(10, 10, 10, 0.7); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border); 
+            border-radius: 100px; 
+            padding: 0.75rem 1.5rem; 
+            display: flex; 
+            gap: 2rem; 
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--text-main); }
 
-        /* Typography */
-        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin: 1rem 0; font-weight: 600; letter-spacing: -0.02em; }
-        h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; margin-bottom: 3rem; letter-spacing: -0.02em; }
-        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 500; }
-        p { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 1rem; }
+        /* Centered Hero */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 4rem; }
+        
+        .status-pill { 
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; 
+            border: 1px solid var(--border); border-radius: 100px; margin-bottom: 2rem;
+            background: rgba(255,255,255,0.02);
+        }
+        .status-dot { width: 6px; height: 6px; background-color: #00ff66; border-radius: 50%; box-shadow: 0 0 10px #00ff66; }
+        
+        .hero h1 { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; max-width: 900px; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin-bottom: 1rem; }
 
-        /* Tags & Metrics */
-        .tag { display: inline-block; padding: 0.2rem 0.6rem; border: 1px solid var(--border); font-size: 0.75rem; color: var(--text-dim); margin: 0 0.5rem 0.5rem 0; font-family: 'JetBrains Mono'; }
-        .metric-highlight { color: var(--accent); font-weight: 600; font-family: 'JetBrains Mono'; font-size: 1.25rem; display: block; margin-top: 1rem; }
+        /* Section Layouts */
+        section { padding: 6rem 0; }
+        .section-title { font-size: 2rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 3rem; text-align: center; }
 
-        /* Case Studies */
-        .case-study { background: var(--surface); padding: 3rem; border: 1px solid var(--border); margin-bottom: 2rem; border-left: 3px solid var(--accent); }
-        .cs-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-        .cs-section strong { display: block; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.25rem; text-transform: uppercase; }
-        .cs-section p { font-size: 0.95rem; margin-bottom: 0; }
-        .cs-insight { padding: 1rem; background: var(--accent-dim); border: 1px solid rgba(0,255,136,0.2); color: var(--accent); font-style: italic; font-size: 0.95rem; margin: 1.5rem 0; }
+        /* Bento Grid System */
+        .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        
+        .bento-card { 
+            background: var(--surface); 
+            border: 1px solid var(--border); 
+            border-radius: 24px; 
+            padding: 2.5rem; 
+            transition: all 0.3s ease;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .bento-card:hover { transform: translateY(-4px); border-color: var(--border-hover); background: var(--surface-hover); }
+        .bento-card.large { grid-column: span 2; }
+        
+        .bento-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+        .bento-card h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+        
+        .metric-group { margin-top: 2rem; }
+        .metric-value { font-size: 3rem; font-weight: 800; color: var(--text-main); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
 
-        /* Process & Capabilities */
-        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .process-step { padding: 2rem; border: 1px solid var(--border); }
-        .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .cap-col ul { list-style: none; }
-        .cap-col li { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+        /* Principles Flex Grid */
+        .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .principle-card { border-top: 2px solid var(--border); padding-top: 1.5rem; }
+        .principle-card:hover { border-color: var(--text-main); transition: border-color 0.3s; }
+        .principle-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .principle-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-        /* Experience Timeline */
-        .exp-item { margin-bottom: 3rem; position: relative; padding-left: 2rem; border-left: 1px solid var(--border); }
-        .exp-item .meta { color: var(--accent); margin-bottom: 1rem; font-size: 0.9rem; font-family: 'JetBrains Mono'; }
-        .exp-item ul { list-style: none; color: var(--text-dim); }
-        .exp-item li { margin-bottom: 0.75rem; font-size: 0.95rem; position: relative; }
-        .exp-item li::before { content: "→"; position: absolute; left: -1.5rem; color: var(--accent); }
+        /* Modern Timeline */
+        .timeline { display: flex; flex-direction: column; gap: 1rem; }
+        .timeline-item { 
+            display: grid; grid-template-columns: 1fr 3fr; gap: 2rem; 
+            padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+            transition: border-color 0.3s;
+        }
+        .timeline-item:hover { border-color: var(--border-hover); }
+        .timeline-meta { font-family: 'JetBrains Mono'; font-size: 0.85rem; color: var(--text-muted); }
+        .timeline-role { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+        .timeline-list { list-style: none; color: var(--text-muted); }
+        .timeline-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; font-size: 0.95rem; }
+        .timeline-list li::before { content: "→"; position: absolute; left: 0; color: var(--text-main); }
 
         /* Footer */
-        footer { padding: 4rem 0; text-align: center; color: var(--text-dim); font-size: 0.8rem; }
+        footer { padding: 6rem 0 3rem; text-align: center; }
+        .footer-cta { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 2rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-main); }
 
-        /* =========================================
-           MOBILE OPTIMIZATION (Screens under 768px)
-           ========================================= */
-        @media (max-width: 768px) { 
+        @media (max-width: 768px) {
             .container { padding: 0 1.5rem; }
-            section { padding: 4rem 0; }
-            nav { flex-direction: column; align-items: flex-start; gap: 1.25rem; padding: 1.5rem 0; }
-            .nav-links { width: 100%; flex-wrap: wrap; gap: 1rem; }
-            .nav-links a { margin-left: 0; }
-            .case-study { padding: 1.5rem; }
-            .cap-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .process-step { padding: 1.5rem; }
+            nav { width: 90%; max-width: 400px; justify-content: center; gap: 1rem; }
+            nav a { font-size: 0.75rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card.large { grid-column: span 1; }
+            .principles-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .timeline-item { grid-template-columns: 1fr; gap: 1rem; padding: 1.5rem; }
+            .metric-value { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
     <nav>
-        <div class="mono">Aniket Mukherjee</div>
-        <div class="nav-links">
-            <a href="#about">Thesis</a>
-            <a href="#work">Systems</a>
-            <a href="#process">Process & Stack</a>
-            <a href="#exp">Experience</a>
-            <a href="mailto:aniket.mu86@gmail.com">Contact</a>
-        </div>
+        <a href="#products">Infrastructure</a>
+        <a href="#principles">Principles</a>
+        <a href="#log">Log</a>
+        <a href="mailto:aniket.mu86@gmail.com">Contact</a>
     </nav>
 
-    <section class="hero" id="about">
-        <div class="mono">Deputy Manager & Studio Lead | PwC AC</div>
-        <h1>Scaling Creative Output Through <span style="color: var(--accent)">Algorithmic Workflows.</span></h1>
-        <p style="max-width: 800px; font-size: 1.25rem; color: var(--text-main); margin-top: 2rem;">The Professional Paradox</p>
-        <p style="max-width: 800px;">17 years in broadcast and corporate production taught me that the bottleneck isn't talent—it's infrastructure. I bridge the gap between high-level creative vision and the technical pipelines required to execute it globally.</p>
-        <p style="max-width: 800px;">Currently leading the studio at PwC, I develop custom AI agents and automated pipelines that transform manual bottlenecks into scalable assets.</p>
-    </section>
+    <main class="container">
+        <section class="hero">
+            <div class="status-pill mono">
+                <div class="status-dot"></div>
+                [span_0](start_span)Deputy Manager & Studio Lead[span_0](end_span)
+            </div>
+            <h1>Productizing Creative Execution.</h1>
+            <p>The bottleneck isn't talent; it's operational debt. [span_1](start_span)I build AI infrastructure that scales enterprise storytelling from zero to one.[span_1](end_span)</p>
+            [span_2](start_span)[span_3](start_span)<p>Bridging 17+ years of broadcast mechanics with LLMs to engineer manual workflows out of existence.[span_2](end_span)[span_3](end_span)</p>
+        </section>
 
-    <section id="work">
-        <div class="mono" style="margin-bottom: 1rem;">// Case_Studies</div>
-        <h2>Deployed Systems</h2>
-
-        <div class="case-study">
-            <div class="mono">System 01</div>
-            <h3>Automating Global Subtitle Localization</h3>
-            <div class="cs-insight">Insight: Subtitling isn't a creative task; it's a data-mapping problem.</div>
-            <div class="cs-grid">
-                <div class="cs-section">
-                    <strong>Problem</strong>
-                    <p>Manual subtitle conversion across 12+ broadcast formats was consuming 40% of post-production time for global campaigns.</p>
+        <section id="products">
+            <h2 class="section-title">Deployed Infrastructure</h2>
+            <div class="bento-grid">
+                
+                <div class="bento-card large">
+                    <div class="bento-header">
+                        [span_4](start_span)<h3>The Localization Engine[span_4](end_span)</h3>
+                        <span class="mono text-muted">Python / Claude API</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div>
+                            [span_5](start_span)<p class="text-muted" style="margin-bottom: 1rem;"><strong>Bottleneck:</strong> 17-hour manual cycles to convert subtitles across 12+ broadcast formats.[span_5](end_span)</p>
+                            <p class="text-muted"><strong>Build:</strong> Python script utilizing Claude API to parse raw transcripts. [span_6](start_span)Maps data instantly to SRT, VTT, SCC, XML while enforcing constraints.[span_6](end_span)</p>
+                        </div>
+                        <div class="metric-group" style="margin-top: 0;">
+                            [span_7](start_span)<div class="metric-value">92% faster[span_7](end_span)</div>
+                            <p class="mono text-muted">Est. [span_8](start_span)$45k/year saved in vendor costs.[span_8](end_span)</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="cs-section">
-                    <strong>Solution & Execution</strong>
-                    <p>Built a custom Python/Claude-powered subtitle converter that parses raw transcripts and maps them to disparate technical specs (SRT, VTT, SCC, XML) instantly. Integrated LLM logic to handle line-breaks and character limits based on platform-specific constraints.</p>
+
+                <div class="bento-card">
+                    <div class="bento-header">
+                        [span_9](start_span)<h3>Compression Protocol[span_9](end_span)</h3>
+                    </div>
+                    <p class="text-muted">Automated FFmpeg governor with a Claude interface. [span_10](start_span)One-click deterministic presets for LinkedIn and Broadcast.[span_10](end_span)</p>
+                    <div class="metric-group">
+                        [span_11](start_span)<div class="metric-value">Zero fails[span_11](end_span)</div>
+                        <p class="mono text-muted">500+ assets in Q3. [span_12](start_span)60% smaller file sizes.[span_12](end_span)</p>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="bento-header">
+                        [span_13](start_span)<h3>Neural Audio Arch[span_13](end_span)</h3>
+                    </div>
+                    <p class="text-muted">Programmatic workflow (ElevenLabs + Adobe APIs) to procedurally re-skin audio. [span_14](start_span)Automated batch normalization to -14 LUFS.[span_14](end_span)</p>
+                    <div class="metric-group">
+                        [span_15](start_span)<div class="metric-value">80% faster[span_15](end_span)</div>
+                        [span_16](start_span)<p class="mono text-muted">Unlocked same-day C-suite delivery.[span_16](end_span)</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="principles">
+            <h2 class="section-title">Operating Principles</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <span class="mono text-muted" style="display: block; margin-bottom: 1rem;">01</span>
+                    <h4>Default to Leverage</h4>
+                    <p>Subtitling and rendering are data problems, not creative tasks. If it requires deterministic logic, automate it. Preserve human capital for strategy.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="mono text-muted" style="display: block; margin-bottom: 1rem;">02</span>
+                    <h4>Pipeline > Canvas</h4>
+                    <p>A studio is only as strong as its Documentation-as-Code. [span_17](start_span)[span_18](start_span)Quality must be enforced by the system, not the user.[span_17](end_span)[span_18](end_span)</p>
+                </div>
+                <div class="principle-card">
+                    <span class="mono text-muted" style="display: block; margin-bottom: 1rem;">03</span>
+                    <h4>Minimum Viable Workflow</h4>
+                    <p>Audit friction. Prototype logic via LLMs/Python. Integrate silently into existing UIs (Slack/Web) for zero-friction adoption.</p>
                 </div>
             </div>
-            <span class="metric-highlight">Impact: 92% reduction in turnaround time. Estimated savings of $45k/year in external vendor costs.</span>
-        </div>
+        </section>
 
-        <div class="case-study">
-            <div class="mono">System 02</div>
-            <h3>Eliminating Technical Debt in Video Delivery</h3>
-            <div class="cs-insight">Insight: Creative quality should be enforced by the pipeline, not the user.</div>
-            <div class="cs-grid">
-                <div class="cs-section">
-                    <strong>Problem</strong>
-                    <p>Non-technical stakeholders struggling with bitrates and codecs, leading to failed uploads or degraded brand quality.</p>
+        <section id="log">
+            <h2 class="section-title">Track Record</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    [span_19](start_span)<div class="timeline-meta">2024 — Present<br>PwC AC Kolkata[span_19](end_span)</div>
+                    <div>
+                        [span_20](start_span)<div class="timeline-role">Strategic Consultant & Studio Lead[span_20](end_span)</div>
+                        <ul class="timeline-list">
+                            [span_21](start_span)<li>Established autonomous production model, bypassing bottlenecks and external vendors.[span_21](end_span)</li>
+                            [span_22](start_span)<li>Govern end-to-end creative lifecycle for Global L&D initiatives.[span_22](end_span)</li>
+                            [span_23](start_span)<li>Pioneering GenAI workflows to shift focus from volume to high-margin strategy.[span_23](end_span)</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="cs-section">
-                    <strong>Solution & Execution</strong>
-                    <p>Developed an automated compression tool using FFmpeg wrapped in a Claude-architected interface. Created "one-click" presets that optimize for LinkedIn, Broadcast, and Internal Hubs while maintaining 10-bit color integrity.</p>
+
+                <div class="timeline-item">
+                    [span_24](start_span)<div class="timeline-meta">2021 — 2023<br>PwC[span_24](end_span)</div>
+                    <div>
+                        [span_25](start_span)<div class="timeline-role">Creative Lead (UK Video)[span_25](end_span)</div>
+                        <ul class="timeline-list">
+                            [span_26](start_span)<li>Scaled 12-member offshore team to deliver 300+ annual assets.[span_26](end_span)</li>
+                            [span_27](start_span)<li>Drove operational velocity securing 'In-House Agency of the Year' (IHAF).[span_27](end_span)</li>
+                            [span_28](start_span)<li>Implemented rigorous QA to optimize burn rates and reduce rework.[span_28](end_span)</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <span class="metric-highlight">Impact: Zero delivery failures across 500+ assets in Q3. Average file size reduced by 60% with no perceptual quality loss.</span>
-        </div>
 
-        <div class="case-study">
-            <div class="mono">System 03</div>
-            <h3>AI-Driven Audio Restoration for Executive Comms</h3>
-            <div class="cs-insight">Insight: Audio clarity is the primary driver of perceived production value.</div>
-            <div class="cs-grid">
-                <div class="cs-section">
-                    <strong>Problem</strong>
-                    <p>High-stakes executive interviews recorded in non-treated environments required hours of manual EQ and spectral repair.</p>
+                <div class="timeline-item">
+                    [span_29](start_span)<div class="timeline-meta">2017 — 2021<br>PwC AC[span_29](end_span)</div>
+                    <div>
+                        [span_30](start_span)<div class="timeline-role">Pipeline Architect & Senior Designer[span_30](end_span)</div>
+                        <ul class="timeline-list">
+                            [span_31](start_span)<li>Founding team member; built 0-to-1 server architecture and templates.[span_31](end_span)</li>
+                            [span_32](start_span)<li>Automated proprietary music library, eliminating 100% of stock audio costs.[span_32](end_span)</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="cs-section">
-                    <strong>Solution & Execution</strong>
-                    <p>A custom workflow integrating ElevenLabs and Adobe Podcast APIs, orchestrated via a custom-built interface to "re-skin" damaged audio. Used Claude to script the batch processing of audio files, normalizing loudness levels to -14 LUFS automatically.</p>
-                </div>
-            </div>
-            <span class="metric-highlight">Impact: 80% faster audio cleanup. Enabled "same-day" delivery for C-suite global announcements.</span>
-        </div>
 
-        <div class="case-study">
-            <div class="mono">System 04</div>
-            <h3>Scaling a Tier-1 Global Studio</h3>
-            <div class="cs-insight">Insight: A studio is only as strong as its Documentation-as-Code.</div>
-            <div class="cs-grid">
-                <div class="cs-section">
-                    <strong>Problem</strong>
-                    <p>Highly fragmented workflows across different territories leading to inconsistent brand output.</p>
-                </div>
-                <div class="cs-section">
-                    <strong>Solution & Execution</strong>
-                    <p>Redesigned the PwC studio pipeline, moving from ad-hoc requests to a standardized intake-to-archive system. Implemented centralized asset management and AI-assisted tagging for a library of 10,000+ assets.</p>
-                </div>
             </div>
-            <span class="metric-highlight">Impact: 30% increase in output capacity without increasing headcount. Standardized quality control across 4 global regions.</span>
-        </div>
-    </section>
-
-    <section id="process">
-        <div class="mono" style="margin-bottom: 1rem;">// Framework_&_Capabilities</div>
-        <h2>The "Systems First" Framework</h2>
-        <p style="margin-bottom: 3rem;">I don't start with a canvas; I start with a logic gate.</p>
-        
-        <div class="process-grid" style="margin-bottom: 5rem;">
-            <div class="process-step">
-                <div class="mono">01. Audit</div>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">Mapping the current "friction points" in the creative lifecycle.</p>
-            </div>
-            <div class="process-step">
-                <div class="mono">02. Architect</div>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">Designing the logic (LLM prompts, API integrations, Python scripts).</p>
-            </div>
-            <div class="process-step">
-                <div class="mono">03. Prototype</div>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">Building the "Minimum Viable Pipeline" to test speed vs. quality.</p>
-            </div>
-            <div class="process-step">
-                <div class="mono">04. Deploy</div>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">Integrating the tool into the team's existing UI (Slack, Web, or Desktop).</p>
-            </div>
-            <div class="process-step">
-                <div class="mono">05. Iterate</div>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">Monitoring token usage, speed, and creative feedback.</p>
-            </div>
-        </div>
-
-        <h3>Technical & Creative Stack</h3>
-        <div class="cap-grid" style="margin-top: 2rem;">
-            <div class="cap-col">
-                <div class="mono" style="margin-bottom: 1rem; color: var(--text-main);">Creative Strategy</div>
-                <ul>
-                    <li>Broadcast Storytelling</li>
-                    <li>Motion Systems</li>
-                    <li>Executive Production</li>
-                    <li>Brand Governance</li>
-                </ul>
-            </div>
-            <div class="cap-col">
-                <div class="mono" style="margin-bottom: 1rem; color: var(--text-main);">Technical Architecture</div>
-                <ul>
-                    <li>Python / FFmpeg</li>
-                    <li>Pipeline Development</li>
-                    <li>Workflow Automation</li>
-                    <li>Cloud Infrastructure</li>
-                </ul>
-            </div>
-            <div class="cap-col">
-                <div class="mono" style="margin-bottom: 1rem; color: var(--text-main);">AI & Automation</div>
-                <ul>
-                    <li>LLM Orchestration (Claude)</li>
-                    <li>Custom GPT/Agent Building</li>
-                    <li>Prompt Engineering</li>
-                    <li>API Integration</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="exp">
-        <div class="mono" style="margin-bottom: 1rem;">// Professional_Timeline</div>
-        <h2>Experience</h2>
-
-        <div class="exp-item">
-            <h3>Strategic Consultant & Video Specialist (Global L&D)</h3>
-            <p class="meta">PwC AC Kolkata | Jan 2024 – Present</p>
-            <ul>
-                <li>Lead the end-to-end creative lifecycle for high-stakes Global L&D initiatives; act as the primary creative consultant to ensure cross-market brand consistency and narrative alignment.</li>
-                <li>Established a high-velocity, autonomous production model to bypass internal bottlenecks, eliminating reliance on external vendors for priority deliverables.</li>
-                <li>Shifted operational focus from volume-based execution to high-value strategic storytelling, elevating the quality standard for C-suite and leadership development content.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item">
-            <h3>Creative Lead - UK Video & Animation Team</h3>
-            <p class="meta">PwC | 2021 – 2023</p>
-            <ul>
-                <li>Led a 12-member cross-functional offshore team delivering 300+ assets annually to global PwC stakeholders.</li>
-                <li>Sustained high team velocity post-pandemic, directly contributing to PwC winning In-House Agency of the Year 2021 (IHAF).</li>
-                <li>Managed annual budgeting/forecasting for the UK market and reduced rework through rigorous QA protocols.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item">
-            <h3>Senior Motion Graphic Designer & Pipeline Architect</h3>
-            <p class="meta">PwC AC | 2017 – 2021</p>
-            <ul>
-                <li>Founding member of the team; established file naming conventions, server architecture, and reusable template libraries.</li>
-                <li>Led rapid transition to 100% remote operations during COVID-19 with zero downtime.</li>
-                <li>Built in-house Sound Design capabilities and a proprietary music library, resulting in 100% elimination of external stock audio licensing costs for internal campaigns.</li>
-            </ul>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p class="mono">aniket.mu86@gmail.com | +91 83349 73777</p>
-        <div style="margin: 1rem 0;">
-            <a href="https://linkedin.com/in/aniket86" class="mono" style="color: var(--text-dim); text-decoration: none; margin-right: 1rem;">LINKEDIN</a>
-            <a href="https://vimeo.com/showcase/12012098" class="mono" style="color: var(--text-dim); text-decoration: none;">VIMEO</a>
+        <div class="footer-cta">Ready to scale?</div>
+        <div class="footer-links mono">
+            <a href="mailto:aniket.mu86@gmail.com">Email</a>
+            [span_33](start_span)<a href="https://linkedin.com/in/aniket86">LinkedIn[span_33](end_span)</a>
+            [span_34](start_span)<a href="https://vimeo.com/showcase/12012098">Vimeo[span_34](end_span)</a>
         </div>
-        <p style="margin-top: 1rem;">© 2026 Designed for high-velocity creative teams.</p>
     </footer>
-</div>
 
 </body>
 </html>
