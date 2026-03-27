@@ -20,6 +20,10 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+        
         body { 
             background-color: var(--bg); 
             color: var(--text-main); 
@@ -35,6 +39,17 @@
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Nav - Fixed Header */
         nav { 
@@ -61,14 +76,24 @@
         .nav-links { display: flex; align-items: center; }
         .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: color 0.2s; }
         .nav-links a:hover { color: var(--text-main); }
+        
+        /* Pulse Animation for Resume Button */
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+        
         .nav-links a.nav-resume {
             color: var(--accent);
             border: 1px solid var(--accent);
             padding: 0.4rem 1rem;
             border-radius: 4px;
             transition: all 0.2s;
+            animation: subtlePulse 3s infinite;
         }
         .nav-links a.nav-resume:hover {
+            animation: none;
             background: var(--accent-dim);
             color: var(--accent);
         }
@@ -76,7 +101,8 @@
         /* Hero */
         .hero { padding: 4rem 0 5rem; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; margin: 1.5rem 0; letter-spacing: -0.03em; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin-bottom: 3rem; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin-bottom: 1.5rem; }
+        .trust-anchor { border-left: 2px solid var(--accent); padding-left: 1rem; margin-bottom: 3rem; font-size: 0.95rem; }
 
         /* Tech Stack */
         .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
@@ -94,8 +120,20 @@
         h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; margin-bottom: 4rem; letter-spacing: -0.02em; }
         .section-label { color: var(--accent); margin-bottom: 1rem; display: block; }
 
-        .case-study { border: 1px solid var(--border); background: var(--surface); margin-bottom: 2rem; padding: 3rem; transition: border-color 0.3s; }
-        .case-study:hover { border-color: #333; }
+        /* Interactive Case Study Hover */
+        .case-study { 
+            border: 1px solid var(--border); 
+            background: var(--surface); 
+            margin-bottom: 2rem; 
+            padding: 3rem; 
+            transition: all 0.3s ease; 
+        }
+        .case-study:hover { 
+            border-color: var(--accent); 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.05); 
+        }
+        
         .cs-header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; }
         .cs-header h3 { font-size: 1.75rem; font-weight: 500; margin-top: 0.5rem; }
         .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -104,8 +142,8 @@
         .cs-insight { padding: 1.5rem; border-left: 2px solid var(--accent); background: var(--accent-dim); margin-top: 2rem; }
         .cs-impact { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
         .cs-impact ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
-        .cs-impact li strong { color: var(--accent); font-size: 1.2rem; display: block; }
-        .cs-impact li span { color: var(--text-dim); font-size: 0.8rem; }
+        .cs-impact li strong { color: var(--accent); font-size: 1.4rem; display: block; margin-bottom: 0.25rem; }
+        .cs-impact li span { color: var(--text-dim); font-size: 0.85rem; }
 
         /* Experience */
         .exp-item { display: grid; grid-template-columns: 250px 1fr; gap: 2rem; margin-bottom: 4rem; }
@@ -149,7 +187,7 @@
                 <a href="#systems">Systems</a>
                 <a href="#output">Output</a>
                 <a href="#experience">Experience</a>
-                <a href="mailto:aniket.mu86@gmail.com">Contact</a>
+                <a href="#contact-section">Discuss Workflow</a>
                 <a href="Final CV 2026_CT.pdf" target="_blank" class="nav-resume">Resume ↘</a>
             </div>
         </div>
@@ -160,6 +198,10 @@
             <span class="mono section-label">Senior Associate // Media Workflow Engineer</span>
             <h1>Bridging Video Production & <span class="text-accent">AI-Driven Workflows.</span></h1>
             <p>I build AI-assisted video production systems that eliminate manual bottlenecks, reduce vendor reliance, and scale global enterprise content. Bridging 17+ years of broadcast mechanics with custom Python automation.</p>
+            
+            <div class="trust-anchor mono text-dim">
+                Deployed in real-world production environments handling enterprise-scale media workflows.
+            </div>
             
             <div class="stack-grid mono">
                 <div class="stack-item">
@@ -182,7 +224,7 @@
             </div>
         </section>
 
-        <section id="systems">
+        <section id="systems" class="reveal">
             <span class="mono section-label">// Architecture Log</span>
             <h2>Deployed Systems</h2>
 
@@ -268,7 +310,7 @@
             </div>
         </section>
 
-        <section id="output">
+        <section id="output" class="reveal">
             <span class="mono section-label">// Production Output</span>
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap;">
                 <h2 style="margin-bottom: 0;">Visual Proof</h2>
@@ -301,7 +343,7 @@
             </div>
         </section>
 
-        <section id="experience">
+        <section id="experience" class="reveal">
             <span class="mono section-label">// Career Architecture</span>
             <h2>Experience Log</h2>
 
@@ -362,19 +404,19 @@
             </div>
         </section>
 
-        <section id="contact-section" style="border-bottom: none;">
+        <section id="contact-section" class="reveal" style="border-bottom: none;">
             <div class="contact-cta">
-                <span class="mono section-label">Contact</span>
+                <span class="mono section-label">Evaluate Your Pipeline</span>
                 <h3>Stop paying vendors for tasks a script can execute in 3 seconds.</h3>
                 <p>If your team is dealing with workflow bottlenecks or inefficient media pipelines, let’s talk. I'm always open to discussing how technical systems can scale creative output.</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="mailto:aniket.mu86@gmail.com" class="btn mono">Email Me</a>
+                    <a href="mailto:aniket.mu86@gmail.com" class="btn mono">Discuss Your Workflow</a>
                     <a href="Final CV 2026_CT.pdf" target="_blank" class="btn btn-outline mono">Download Resume</a>
                 </div>
             </div>
         </section>
 
-        <footer class="container">
+        <footer class="container reveal">
             <div class="mono text-dim">sys.status: <span class="text-accent">ONLINE</span></div>
             <div class="footer-links mono">
                 <a href="https://linkedin.com/in/aniket86" target="_blank" style="color: var(--text-dim); text-decoration: none;">[LINKEDIN]</a>
@@ -385,5 +427,20 @@
 
     </main>
 
+    <script>
+        // Intersection Observer for smooth scroll reveals
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => { revealOnScroll.observe(reveal); });
+    </script>
 </body>
 </html>
