@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniket Mukherjee | Creative Technologist</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <title>Aniket Mukherjee | Creative Automation Leader</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟢</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -13,93 +13,426 @@
             --bg: #0a0a0a;
             --surface: #111111;
             --border: #222222;
-            --accent: #ff7a1a; /* Updated to match Subtitle Studio Orange */
-            --accent-dim: rgba(255, 122, 26, 0.05);
+            --accent: #00ff88; /* RESTORED GREEN */
+            --accent-dim: rgba(0, 255, 136, 0.05);
             --text-main: #ffffff;
             --text-dim: #888888;
         }
 
-        /* ... [Keeping your existing CSS structure for brevity] ... */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; padding-top: 6rem; }
+        body { 
+            background-color: var(--bg);
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 6rem;
+        }
+        
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
         .text-accent { color: var(--accent); }
         .text-dim { color: var(--text-dim); }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 6rem 0; border-bottom: 1px solid var(--border); }
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
-        .nav-content { max-width: 1000px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        nav { 
+            position: fixed;
+            top: 0; left: 0; right: 0; width: 100%; z-index: 9999; 
+            background: rgba(10, 10, 10, 0.8); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-content { 
+            max-width: 1000px;
+            margin: 0 auto; padding: 1.5rem 2rem; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-name { font-size: 1.25rem; font-weight: 700; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-main); }
+        
+        .nav-links a.nav-resume {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .nav-links a.nav-resume:hover {
+            background: var(--accent-dim);
+        }
+
+        .hero { padding: 4rem 0 5rem; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; margin: 1.5rem 0; letter-spacing: -0.03em; }
-        .case-study { border: 1px solid var(--border); background: var(--surface); margin-bottom: 4rem; padding: 3rem; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin-bottom: 1.5rem; }
+        .trust-anchor { border-left: 2px solid var(--accent); padding-left: 1rem; margin-bottom: 3rem; font-size: 0.95rem; }
+        .philosophy { font-size: 1.5rem; font-weight: 500; color: var(--text-main); margin-bottom: 1.5rem; display: block; }
+
+        .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .stack-item { border-left: 1px solid var(--border); padding-left: 1.5rem; }
+        .stack-item strong { display: block; margin-bottom: 0.5rem; color: var(--text-main); font-size: 0.9rem; }
+        .stack-item p { font-size: 0.85rem; color: var(--text-dim); }
+
+        .btn { display: inline-block; padding: 1rem 2rem; background: var(--text-main); color: var(--bg); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.2s; border: none; cursor: pointer; }
+        .btn:hover { background: var(--accent); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border); margin-left: 1rem; }
+        .btn-outline:hover { border-color: var(--text-main); background: transparent; }
+
+        h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; margin-bottom: 4rem; letter-spacing: -0.02em; }
+        .section-label { color: var(--accent); margin-bottom: 1rem; display: block; }
+
+        .case-study { 
+            border: 1px solid var(--border);
+            background: var(--surface); 
+            margin-bottom: 4rem; padding: 3rem; 
+            transition: all 0.3s ease;
+        }
+        .case-study:hover { 
+            border-color: var(--accent);
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.05);
+        }
+        
         .cs-header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 2rem; }
+        .cs-header h3 { font-size: 1.75rem; font-weight: 500; margin-top: 0.5rem; }
+        
+        .ui-screenshot {
+            width: 100%;
+            height: 450px;
+            background: #050505;
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
+
+        .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .cs-block strong { display: block; margin-bottom: 0.5rem; color: var(--text-main); }
+        .cs-block p { color: var(--text-dim); font-size: 0.95rem; }
+        .cs-insight { padding: 1.5rem; border-left: 2px solid var(--accent); background: var(--accent-dim); margin-top: 2rem; }
+        .cs-impact { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
         .cs-impact ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
-        .cs-impact li strong { color: var(--accent); font-size: 1.4rem; display: block; }
-        .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #000; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.2s; border: none; }
-        .ui-screenshot { width: 100%; height: 450px; background: #000; border: 1px solid #333; margin-bottom: 2rem; background-size: cover; background-position: center; }
+        .cs-impact li strong { color: var(--accent); font-size: 1.4rem; display: block; margin-bottom: 0.25rem; }
+        .cs-impact li span { color: var(--text-dim); font-size: 0.85rem; }
+
+        .exp-item { display: grid; grid-template-columns: 250px 1fr; gap: 2rem; margin-bottom: 4rem; }
+        .exp-item h4 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .exp-item ul { list-style: none; color: var(--text-dim); margin-top: 1rem; }
+        .exp-item li { margin-bottom: 0.75rem; position: relative; padding-left: 1.5rem; }
+        .exp-item li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+        .contact-cta { text-align: center; padding: 6rem 2rem; background: var(--surface); border: 1px solid var(--border); margin: 4rem 0; }
+        .contact-cta h3 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1.5rem; }
+        .contact-cta p { color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem; }
+
+        footer { padding: 4rem 0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+        .footer-links { display: flex; gap: 2rem; }
+
+        @media (max-width: 768px) {
+            body { padding-top: 13rem; } 
+            .nav-content { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.5rem; }
+            .nav-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+            .nav-links a { margin-left: 0; margin-right: 0; font-size: 0.75rem; }
+            .nav-links a.nav-resume { margin-top: 0.25rem; width: fit-content; }
+            .hero { padding: 2rem 0 3rem; }
+            .btn-outline { margin-left: 0; margin-top: 1rem; display: block; text-align: center; }
+            .cs-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .case-study { padding: 2rem 1.5rem; }
+            .ui-screenshot { height: 200px; margin-bottom: 2rem; }
+            .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .cs-impact ul { grid-template-columns: 1fr; gap: 1.5rem; }
+            footer { flex-direction: column; gap: 2rem; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="nav-content">
-            <div class="mono text-main">Aniket Mukherjee</div>
+            <div class="mono text-main brand-name">Aniket Mukherjee</div>
             <div class="nav-links mono">
-                <a href="#systems">Infrastructure</a>
-                <a href="#experience">Log</a>
-                <a href="mailto:aniket.mu86@gmail.com" class="text-accent">Contact ↘</a>
+                <a href="#systems">Architecture</a>
+                <a href="#output">Output</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact-section">Discuss Infrastructure</a>
+                <a href="Final CV 2026_CT.pdf" target="_blank" class="nav-resume">Resume ↘</a>
             </div>
         </div>
     </nav>
 
     <main class="container">
         <section class="hero">
-            <span class="mono text-accent">v4.0 Release Build // Creative Technologist</span>
-            <h1>Architecting the next generation of <span class="text-accent">NLE-Lite Systems.</span></h1>
-            <p>I build professional-grade creative automation tools. My latest work, <strong>Subtitle Studio v4.0</strong>, is a frame-accurate media suite that replaces heavy post-production overhead with lightweight, AI-accelerated Python infrastructure.</p>
+            <span class="mono section-label">Creative Automation Leader // Production Systems Architect</span>
+            <h1>Designing Intelligent Creative <span class="text-accent">Production Systems.</span></h1>
+            
+            <span class="philosophy">I architect systems. I leverage AI to accelerate how they are built.</span>
+            
+            <p>I design and deploy AI-powered creative automation platforms that replace fragmented manual workflows. I design system architecture, define logic, and validate execution—leveraging AI to accelerate development, not replace engineering rigor.</p>
+            
+            <div class="trust-anchor mono text-dim">
+                Built on 17+ years of broadcast production experience—my value is defining the exact production logic, edge cases, and brand constraints to generate secure, air-gapped enterprise infrastructure.
+            </div>
+            
+            <div class="stack-grid mono">
+                <div class="stack-item">
+                    <strong>System Architecture</strong>
+                    <p>Workflow Design, Logic Decomposition</p>
+                </div>
+                <div class="stack-item">
+                    <strong>LLM-Accelerated Stack</strong>
+                    <p>Python 3.12, FFmpeg, PyTorch, JS/RegEx</p>
+                </div>
+                <div class="stack-item">
+                    <strong>Validation & Deployment</strong>
+                    <p>Human-in-the-loop QA, Zero-Install Packaging</p>
+                </div>
+            </div>
             
             <div style="margin-top: 3rem;">
-                <a href="#systems" class="btn mono">View Systems</a>
+                <a href="#systems" class="btn mono">Examine Systems</a>
+                <a href="#experience" class="btn btn-outline mono">Experience Log</a>
             </div>
         </section>
 
-        <section id="systems">
-            <span class="mono text-accent">// Flagship System: Subtitle Studio v4.0</span>
+        <section id="systems" class="reveal">
+            <span class="mono section-label">// Architecture Log</span>
+            <h2>Flagship Platforms</h2>
+
             <div class="case-study">
                 <div class="cs-header">
-                    <span class="mono text-dim">Core Engine: OpenCV + Pygame + FFmpeg</span>
-                    <h3>High-Speed Post-Production Middleware</h3>
+                    <span class="mono text-dim">sys.id_01</span>
+                    <h3>Subtitle Studio v4.0</h3>
                 </div>
                 
                 <div class="ui-screenshot" style="background-image: url('subtitle-studio-ui.png');"></div>
 
-                <div class="cs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-                    <div>
-                        <strong>NLE-Lite Functionality</strong>
-                        <p style="color: var(--text-dim);">Implemented J-K-L navigation and frame-accurate seeking (15fps) using a custom threaded OpenCV buffer. Supports 4 distinct export modes including Section Merging and Time-Adjusted burning.</p>
+                <div class="cs-grid">
+                    <div class="cs-block">
+                        <strong>NLE-Lite Architecture</strong>
+                        <p>A frame-accurate (15fps) media suite integrating OpenCV visuals and Pygame audio. Architected with J-K-L navigation, a 30-level undo stack, and real-time spellcheck with a persistent user-dictionary.</p>
                     </div>
-                    <div>
-                        <strong>Enterprise Resilience</strong>
-                        <p style="color: var(--text-dim);">Built for project portability with a 3-tier relative path relinking system and .ssproj JSON state management. Features 60s autosave and 30-level global undo stack.</p>
+                    <div class="cs-block">
+                        <strong>Enterprise Reliability</strong>
+                        <p>Eliminated broken workflows with 3-tier relative path relinking and .ssproj state management. Supports 4 export modes, including time-adjusted merging and hardcoded burning for brand compliance.</p>
                     </div>
                 </div>
-
-                <div style="margin-top: 2rem; padding: 1.5rem; border-left: 2px solid var(--accent); background: var(--accent-dim);" class="mono">
-                    Key Win: Integrated real-time spellcheck with a persistent user-dictionary that survives sessions.
+                <div class="cs-insight mono">
+                    Governance: Air-gapped project files (.ssproj) ensure 100% data security and portable project relinking.
                 </div>
-
-                <div class="cs-impact" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                <div class="cs-impact">
                     <ul class="mono">
                         <li><strong>15 FPS</strong> <span>Visual Preview</span></li>
                         <li><strong>30-Level</strong> <span>Undo Stack</span></li>
-                        <li><strong>100%</strong> <span>Air-Gapped Privacy</span></li>
+                        <li><strong>Automated</strong> <span>QA & Localization</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="mono text-dim">sys.id_02</span>
+                    <h3>Intelligent Video Revision Tracker</h3>
+                </div>
+
+                <div class="ui-screenshot" style="background-image: url('revision-tracker-ui.png');"></div>
+
+                <div class="cs-grid">
+                    <div class="cs-block">
+                        <strong>LLM-Accelerated Development</strong>
+                        <p>Dependency-free JavaScript parsing engine (RegEx). I directed the AI to auto-detect timecodes, categorize feedback types, and generate localized, status-validated Excel dashboards.</p>
+                    </div>
+                    <div class="cs-block">
+                        <strong>Impact</strong>
+                        <p>Instantly converts unstructured client email feedback into structured, trackable production data. Eliminates missed feedback and prevents costly rework cycles.</p>
+                    </div>
+                </div>
+                <div class="cs-insight mono">
+                    Governance: Transforming unstructured prose into standardized data accelerates project velocity.
+                </div>
+                <div class="cs-impact">
+                    <ul class="mono">
+                        <li><strong>10+ Hrs/Wk</strong> <span>PM Overhead Saved</span></li>
+                        <li><strong>Real-Time</strong> <span>Data Structuring</span></li>
+                        <li><strong>Eliminated</strong> <span>Manual Entry</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="cs-header">
+                    <span class="mono text-dim">sys.id_03</span>
+                    <h3>AVTOOLS: Unified Desktop Ecosystem</h3>
+                </div>
+
+                <div class="ui-screenshot" style="background-image: url('avtools-ui.png');"></div>
+
+                <div class="cs-grid">
+                    <div class="cs-block">
+                        <strong>Programmatic Pipeline Design</strong>
+                        <p>Architected a standalone macOS environment integrating PyTorch (DeepFilterNet3) for one-click AI audio repair, alongside custom Python modules for automated folder structures.</p>
+                    </div>
+                    <div class="cs-block">
+                        <strong>Impact</strong>
+                        <p>Bypasses the need to launch heavy creative applications for routine tasks. Enforces strict organizational folder governance at the exact point of project creation.</p>
+                    </div>
+                </div>
+                <div class="cs-insight mono">
+                    Governance: Centralized tooling enforces standard operating procedures at the software level.
+                </div>
+                <div class="cs-impact">
+                    <ul class="mono">
+                        <li><strong>>90%</strong> <span>Time Reduction</span></li>
+                        <li><strong>Automated</strong> <span>Architecture</span></li>
+                        <li><strong>Standalone</strong> <span>macOS App</span></li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        </main>
+        <section id="output" class="reveal">
+            <span class="mono section-label">// Production Output</span>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap;">
+                <h2 style="margin-bottom: 0;">Visual Proof</h2>
+                <a href="https://vimeo.com/showcase/12012098" target="_blank" class="mono text-dim" style="text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; transition: color 0.3s; margin-top: 1rem;">View Full Archive →</a>
+            </div>
+            
+            <p class="text-dim" style="margin-bottom: 3rem; max-width: 700px; color: var(--accent);">
+                All outputs below are managed and delivered using the proprietary automation systems described above.
+            </p>
+
+            <div class="cs-grid">
+                <div class="case-study" style="padding: 1.5rem; margin-bottom: 0;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; border: 1px solid var(--border); background: #000;">
+                        <iframe src="https://player.vimeo.com/video/1114770080?color=ffffff&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 0.25rem;">Creative Showreel</h3>
+                        <span class="mono text-dim">Motion & Broadcast</span>
+                    </div>
+                </div>
+
+                <div class="case-study" style="padding: 1.5rem; margin-bottom: 0;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; border: 1px solid var(--border); background: #000;">
+                         <iframe src="https://player.vimeo.com/video/838799687?color=ffffff&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 0.25rem;">Global Campaign</h3>
+                        <span class="mono text-dim">PwC Studio Output</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="reveal">
+            <span class="mono section-label">// Career Architecture</span>
+            <h2>Experience Log</h2>
+
+            <div class="exp-item">
+                <div class="mono text-dim">2024 — Present<br><span class="text-main">PwC SDC Kolkata</span></div>
+                <div>
+                    <h4>Senior Associate & Studio Lead</h4>
+                    <ul>
+                        <li>Leading creative automation initiatives that reduce production time and standardize workflows across global enterprise teams.</li>
+                        <li>Designing secure, standalone infrastructure that eliminates manual production bottlenecks and standardizes cross-functional execution.</li>
+                        <li>Driving adoption of AI-assisted workflows, transitioning teams from manual execution to automation-first production models.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="mono text-dim">2021 — 2023<br><span class="text-main">PwC</span></div>
+                <div>
+                    <h4>Creative Lead (UK Video & Animation)</h4>
+                    <ul>
+                        <li>Led offshore teams delivering 300+ global assets annually.</li>
+                        <li>Contributed to winning 'In-House Agency of the Year 2021' (IHAF).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="mono text-dim">2017 — 2021<br><span class="text-main">PwC</span></div>
+                <div>
+                    <h4>Senior Motion Designer & Pipeline Architect</h4>
+                    <ul>
+                        <li>Founding member; architected server structures and template libraries.</li>
+                        <li>Built a proprietary music library, eliminating stock licensing costs.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="mono text-dim">2015 — 2016<br><span class="text-main">CNN News18</span></div>
+                <div>
+                    <h4>Broadcast Graphic Designer</h4>
+                    <ul>
+                        <li>Executed live Vizrt graphics for national breaking news broadcasts.</li>
+                        <li>Operated within a high-stakes, 24/7 zero-error environment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="mono text-dim">2008 — 2015<br><span class="text-main">Foundational Broadcast</span></div>
+                <div>
+                    <h4>Motion & Graphic Designer</h4>
+                    <ul>
+                        <li>Delivered high-volume motion graphics for national news outlets.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-section" class="reveal" style="border-bottom: none;">
+            <div class="contact-cta">
+                <span class="mono section-label">Evaluate Your Pipeline</span>
+                <h3>If your team is still paying external vendors or battling shadow-IT risks on repeatable tasks, we should talk.</h3>
+                <p>I architect systems that enforce governance, accelerate execution, and permanently scale your creative output without scaling your headcount.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:aniket.mu86@gmail.com" class="btn mono">Discuss Your Workflow</a>
+                    <a href="Final CV 2026_CT.pdf" target="_blank" class="btn btn-outline mono">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="container reveal">
+            <div class="mono text-dim">sys.status: <span class="text-accent">ONLINE</span></div>
+            <div class="footer-links mono">
+                <a href="https://linkedin.com/in/aniket86" target="_blank" style="color: var(--text-dim); text-decoration: none;">[LINKEDIN]</a>
+                <a href="https://github.com/aniket-mu" target="_blank" style="color: var(--text-dim); text-decoration: none;">[GITHUB]</a>
+            </div>
+            <div class="mono text-dim">© 2026 Aniket Mukherjee</div>
+        </footer>
+
+    </main>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            });
+        }, revealOptions);
+        reveals.forEach(reveal => { revealOnScroll.observe(reveal); });
+    </script>
 </body>
 </html>
