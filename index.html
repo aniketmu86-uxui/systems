@@ -75,14 +75,14 @@
 
         .hero { padding: 4rem 0 5rem; }
         .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; line-height: 1.1; margin: 1.5rem 0; letter-spacing: -0.03em; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 750px; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 800px; margin-bottom: 1.5rem; }
         
         .proof-line { 
             display: inline-block;
             background: var(--accent-dim);
             border-left: 2px solid var(--accent); 
             padding: 0.75rem 1.25rem; 
-            margin-bottom: 3rem; 
+            margin-bottom: 1rem; 
             font-size: 0.95rem; 
             color: var(--text-main);
         }
@@ -105,10 +105,10 @@
 
         .flagship-study { border: 1px solid var(--accent); background: var(--surface); padding: 3rem; position: relative; overflow: hidden; }
         .flagship-study::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
-        .study-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; margin-top: 2rem; }
+        .study-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; margin-top: 1rem; }
         .study-metrics { display: flex; gap: 2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border); }
         .metric { display: flex; flex-direction: column; }
-        .metric strong { font-size: 1.5rem; color: var(--accent); }
+        .metric strong { font-size: 1.25rem; color: var(--accent); }
         .metric span { font-size: 0.85rem; color: var(--text-dim); }
 
         .secondary-study { margin-top: 4rem; padding-top: 4rem; border-top: 1px dashed var(--border); }
@@ -151,12 +151,15 @@
     <main class="container">
         <section class="hero">
             <span class="mono section-label">Product Builder — AI Systems & Workflow Automation</span>
-            <h1>I Build Software That Replaces <span class="text-accent">Manual Workflows.</span></h1>
+            <h1>I Turn Fragile, Manual Pipelines into <span class="text-accent">Reliable Production Systems.</span></h1>
             
-            <p>I am a product-focused systems builder who designs and ships AI-assisted tools that eliminate repetitive, error-prone workflows—especially in media and localization pipelines.</p>
+            <p>I turn messy, manual enterprise workflows into working software systems—designed, built, and deployed under real-world constraints.</p>
             
             <div class="proof-line mono">
-                Proof of Execution: Built and shipped multiple workflow tools (Subtitle Studio, DocuFlow, AVTOOLS) focused on automation, validation, and offline-first deployment.
+                Proof of Execution: Designed and shipped 3 production-grade workflow systems—fully offline, zero-dependency, and built for enterprise constraints.
+            </div>
+            <div class="mono text-dim" style="font-size: 0.85rem; margin-top: -1.5rem; margin-bottom: 3rem; letter-spacing: 0.05em;">
+                Built without external cloud APIs. Designed for air-gapped enterprise environments.
             </div>
             
             <div class="btn-group mono">
@@ -166,24 +169,30 @@
             </div>
         </section>
 
+        <section id="cost-of-inaction" class="reveal">
+            <span class="mono section-label">// The Enterprise Reality</span>
+            <h2>What Happens When Workflows Break</h2>
+            <div class="card card-featured">
+                <p class="text-dim" style="margin-bottom: 1.5rem; font-size: 1.05rem;">
+                    Leaving legacy pipelines unchecked isn't just an inconvenience—it's a compounding operational risk. When teams lack deterministic, automated systems:
+                </p>
+                <div class="grid-2" style="gap: 1rem;">
+                    <ul style="margin-top: 0;">
+                        <li><strong>Silent Errors Scale:</strong> Subtitle sync drift, formatting breaks, and missed compliance checks pass through manual QC unnoticed.</li>
+                        <li><strong>Shadow IT Proliferates:</strong> Teams rely on random online converters, breaking security and audit trails.</li>
+                    </ul>
+                    <ul style="margin-top: 0;">
+                        <li><strong>Vendor Lock-in Deepens:</strong> Scaling production means buying more expensive NLE seats instead of executing headless processing.</li>
+                        <li><strong>Tribal Knowledge Fails:</strong> Processes exist only in the minds of a few senior operators, making onboarding slow and turnover catastrophic.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section id="what-i-build" class="reveal">
             <span class="mono section-label">// The Output</span>
             <h2>What I Build</h2>
             <p class="text-dim" style="max-width: 700px; margin-bottom: 2rem;"> I focus on eliminating high-friction workflows by turning them into reliable, repeatable software systems. My work sits at the intersection of product thinking, automation, and real-world operational constraints.</p>
-
-            <div class="card card-featured">
-                <h3 class="text-accent">Workflow Automation Systems</h3>
-                <div class="grid-2" style="gap: 1rem;">
-                    <ul style="margin-top: 0;">
-                        <li>Replace repetitive manual processes with programmatic logic</li>
-                        <li>Reduce turnaround time & human error at enterprise scale</li>
-                    </ul>
-                    <ul style="margin-top: 0;">
-                        <li>Enforce standard operating procedures directly through UI constraints</li>
-                        <li>Create standalone, independent processing capabilities for non-technical teams</li>
-                    </ul>
-                </div>
-            </div>
 
             <div class="grid-3">
                 <div class="card">
@@ -215,19 +224,22 @@
 
         <section id="flagship" class="reveal">
             <span class="mono section-label">// Featured Execution</span>
-            <h2>Flagship: Subtitle Studio v4.0</h2>
+            <h2 style="margin-bottom: 0.5rem;">Flagship: Subtitle Studio v4.0</h2>
+            <div class="mono text-accent" style="margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 0.1em;">
+                [STATUS] Production-ready system, recently deployed for real-world validation.
+            </div>
 
             <div class="flagship-study">
-                <div class="mono text-accent" style="margin-bottom: 1rem;">// SHIPPED PRODUCT</div>
                 <div class="study-grid">
                     <div>
                         <h4 class="mono text-dim" style="margin-bottom: 0.5rem;">The Problem</h4>
                         <p style="margin-bottom: 1rem;">Enterprise subtitling and media compression lacked a unified tool. Teams relied heavily on expensive NLEs (Premiere/Resolve) and manual processes, creating massive scaling bottlenecks and vendor dependence.</p>
                         
                         <h4 class="mono text-dim" style="margin-bottom: 0.5rem;">The Solution</h4>
-                        <p>Designed a standalone, AI-orchestrated pipeline integrating Whisper with a custom validation engine and native compression tools. It democratizes the process, allowing non-technical users to generate, QC, and encode media without NLEs.</p>
-                        <p class="text-dim" style="margin-top: 1rem; font-size: 0.9rem; border-left: 2px solid var(--border); padding-left: 1rem;">
-                            <strong>Constraint:</strong> The system had to run fully offline with zero external dependencies due to enterprise IT restrictions, which significantly shaped architecture and packaging decisions.
+                        <p>Designed a fully offline, zero-dependency AI pipeline integrating Whisper with a custom validation engine and native compression tools. It handles frame-accurate subtitle validation and sync drift detection automatically before export, allowing non-technical users to generate and QC media without NLEs.</p>
+                        
+                        <p class="text-dim" style="margin-top: 1rem; font-size: 0.9rem; border-left: 2px solid var(--accent); padding-left: 1rem;">
+                            <strong>Real-World Stress Test:</strong> Tested across 20+ real production media files with varying audio quality, heavy accents, and inconsistent source formats.
                         </p>
                     </div>
                     <div>
@@ -248,16 +260,16 @@
 
                 <div class="study-metrics mono">
                     <div class="metric">
-                        <strong>100% Offline</strong>
-                        <span>Zero Cloud Dependencies</span>
+                        <strong>Iterated Execution</strong>
+                        <span>Evolved across 4 major versions</span>
+                    </div>
+                    <div class="metric">
+                        <strong>Turnaround Accelerated</strong>
+                        <span>Reduced from ~4-6 hrs to <45 mins (early tests)</span>
                     </div>
                     <div class="metric">
                         <strong>Zero NLE</strong>
-                        <span>Eliminated Premiere/Resolve</span>
-                    </div>
-                    <div class="metric">
-                        <strong>End-to-End</strong>
-                        <span>Ingest to Encoded Master</span>
+                        <span>Removed Premiere/Resolve from 100% of tested workflows</span>
                     </div>
                 </div>
 
@@ -275,10 +287,13 @@
             </div>
 
             <div class="secondary-study">
-                <span class="mono section-label">// Secondary Execution — Internal Pilot</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">DocuFlow | Document Transformation & Standardization System</h3>
+                <span class="mono section-label">// Secondary Execution</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">DocuFlow | Document Transformation System</h3>
+                <div class="mono text-accent" style="margin-bottom: 1.5rem; font-size: 0.85rem; letter-spacing: 0.1em;">
+                    [STATUS] Internal pilot replacing unsanctioned tools in restricted environments.
+                </div>
                 
-                <div class="study-grid" style="margin-top: 1.5rem;">
+                <div class="study-grid">
                     <div>
                         <p class="text-dim" style="margin-bottom: 1.5rem;">
                             Enterprise documentation workflows often force teams to rely on unapproved "shadow IT" or online converters, creating massive security and compliance vulnerabilities.
@@ -308,31 +323,34 @@
 
                 <div class="study-metrics mono" style="margin-top: 0; padding-top: 0; border-top: none;">
                     <div class="metric">
-                        <strong>Internal Pilot</strong>
-                        <span>Deployed for Validation</span>
+                        <strong>Shadow IT Removed</strong>
+                        <span>Replaced unsanctioned online tools</span>
                     </div>
                     <div class="metric">
-                        <strong>Zero Vendor Risk</strong>
-                        <span>Replaced Shadow IT</span>
+                        <strong>Zero-Install</strong>
+                        <span>Fully bundled, portable runtime</span>
                     </div>
                     <div class="metric">
                         <strong>Air-Gapped</strong>
-                        <span>Airtight Secured Environment</span>
+                        <span>Airtight secured environment</span>
                     </div>
                 </div>
             </div>
 
             <div class="secondary-study" style="margin-top: 4rem; padding-top: 4rem;">
-                <span class="mono section-label">// Secondary Execution — Media Preprocessing</span>
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">AVTOOLS | Modular Media Automation System</h3>
+                <span class="mono section-label">// Secondary Execution</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">AVTOOLS | Modular Media Automation System</h3>
+                <div class="mono text-accent" style="margin-bottom: 1.5rem; font-size: 0.85rem; letter-spacing: 0.1em;">
+                    [STATUS] Functional system validated on real media preprocessing workflows.
+                </div>
                 
-                <div class="study-grid" style="margin-top: 1.5rem;">
+                <div class="study-grid">
                     <div>
                         <p class="text-dim" style="margin-bottom: 1.5rem;">
-                            Media preprocessing—specifically audio cleanup and project structuring—is highly repetitive, manual, and prone to inconsistency across different editors and enterprise teams.
+                            Editors repeatedly perform the same audio cleanup and folder structuring tasks manually across projects, leading to inconsistent setups and wasted time before actual editing even begins.
                         </p>
                         <p class="text-dim" style="margin-bottom: 1.5rem;">
-                            I built AVTOOLS as a standalone desktop utility integrating AI audio cleanup (DeepFilterNet3) and automated folder logic to standardize project setups before human editing even begins.
+                            I built AVTOOLS as a standalone desktop utility integrating AI audio cleanup (DeepFilterNet3) and automated folder logic to standardize project setups.
                         </p>
                     </div>
                     <div>
@@ -354,15 +372,15 @@
                 <div class="study-metrics mono" style="margin-top: 2rem; padding-top: 0; border-top: none;">
                     <div class="metric">
                         <strong>Standardized</strong>
-                        <span>Project Setup Workflows</span>
+                        <span>Eliminates repetitive project setups</span>
                     </div>
                     <div class="metric">
                         <strong>Automated</strong>
-                        <span>Audio Cleanup Pipeline</span>
+                        <span>Consistent audio cleanup pipeline</span>
                     </div>
                     <div class="metric">
-                        <strong>Modular</strong>
-                        <span>Extensible Toolset</span>
+                        <strong>Functional</strong>
+                        <span>Tested on live project workflows</span>
                     </div>
                 </div>
             </div>
@@ -395,6 +413,7 @@
             <span class="mono section-label">// Background</span>
             <h2>About Me</h2>
             <div style="max-width: 800px;">
+
                 <blockquote style="font-style: italic; color: var(--text-main); font-size: 1.25rem; margin-bottom: 2rem; border-left: 2px solid var(--accent); padding-left: 1.5rem; line-height: 1.5;">
                     "I operate as a product builder. I start with broken workflows, not features, and prioritize shipping over 'perfect' architecture."
                 </blockquote>
